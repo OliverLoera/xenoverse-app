@@ -1,19 +1,12 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-
+  multipleStatements: true,
   host: process.env.MYSQLHOST || 'localhost',
-
   user: process.env.MYSQLUSER || 'root',
-
   password: process.env.MYSQLPASSWORD || '',
-
-  database:
-    process.env.MYSQLDATABASE ||
-    'xenoverse_db',
-
+  database: process.env.MYSQLDATABASE || 'xenoverse_db',
   port: process.env.MYSQLPORT || 3306
-
 });
 
 connection.connect(error => {
