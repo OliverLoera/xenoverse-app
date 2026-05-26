@@ -3,7 +3,7 @@ const id = parseInt(params.get('id'));
 
 let habilidadActual = null;
 
-fetch('http://localhost:3000/api/habilidades')
+fetch('https://xenoverse-app-production.up.railway.app/api/habilidades')
   .then(res => res.json())
   .then(data => {
     habilidadActual = data.find(h => h.id === id);

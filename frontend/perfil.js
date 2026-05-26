@@ -73,7 +73,7 @@ function actualizarPerfil() {
     return;
   }
 
-  fetch(`http://localhost:3000/api/usuarios/${usuario.id}`, {
+  fetch(`https://xenoverse-app-production.up.railway.app/api/usuarios/${usuario.id}`, {
 
     method: 'PUT',
 

@@ -12,7 +12,7 @@ cargarHabilidades();
 function cargarHabilidades() {
   const usuario = JSON.parse(localStorage.getItem('usuario'));
 
-  fetch(`http://localhost:3000/api/habilidades?usuario_id=${usuario.id}`)
+  fetch(`https://xenoverse-app-production.up.railway.app/api/habilidades?usuario_id=${usuario.id}`)
     .then(res => res.json())
     .then(data => {
       habilidadesGlobal = data;
@@ -182,7 +182,7 @@ function agregarHabilidad() {
 
   const usuario = JSON.parse(localStorage.getItem('usuario'));
 
-  fetch('http://localhost:3000/api/habilidades', {
+  fetch('https://xenoverse-app-production.up.railway.app/api/habilidades', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -229,7 +229,7 @@ function actualizarHabilidad() {
   const categoria = document.getElementById('editCategoria').value;
   const imagen = document.getElementById('editImagen').value;
 
-  fetch(`http://localhost:3000/api/habilidades/${idEditando}`, {
+  fetch(`https://xenoverse-app-production.up.railway.app/api/habilidades/${idEditando}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -320,7 +320,7 @@ function eliminarHabilidad(id) {
 
   if (!confirmar) return;
 
-  fetch(`http://localhost:3000/api/habilidades/${id}`, {
+  fetch(`https://xenoverse-app-production.up.railway.app/api/habilidades/${id}`, {
     method: 'DELETE'
   })
   .then(res => res.json())

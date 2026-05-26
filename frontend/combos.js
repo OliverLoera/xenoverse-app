@@ -12,7 +12,7 @@ cargarConjuntos();
 
 // Obtener habilidades
 function cargarHabilidades() {
-  fetch('http://localhost:3000/api/habilidades')
+  fetch('https://xenoverse-app-production.up.railway.app/api/habilidades')
     .then(res => res.json())
     .then(data => {
       habilidadesGlobal = data;
@@ -89,7 +89,7 @@ function cargarConjuntos() {
     localStorage.getItem('usuario')
   );
 
-  fetch(`http://localhost:3000/api/conjuntos?usuario_id=${usuario.id}`)
+  fetch(`https://xenoverse-app-production.up.railway.app/api/conjuntos?usuario_id=${usuario.id}`)
 
     .then(res => res.json())
 
@@ -193,7 +193,7 @@ function agregarConjunto() {
   const descripcion = document.getElementById('descripcionConjunto').value;
   const usuario = JSON.parse(localStorage.getItem('usuario'));
 
-  fetch('http://localhost:3000/api/conjuntos', {
+  fetch('https://xenoverse-app-production.up.railway.app/api/conjuntos', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -220,7 +220,7 @@ function agregarConjunto() {
 function agregarAConjunto(habilidadId) {
   const conjuntoId = document.getElementById('select-conjuntos').value;
 
-  fetch(`http://localhost:3000/api/conjuntos/${conjuntoId}/habilidades`, {
+  fetch(`https://xenoverse-app-production.up.railway.app/api/conjuntos/${conjuntoId}/habilidades`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -245,7 +245,7 @@ function agregarAConjunto(habilidadId) {
 
 // Eliminar conjunto
 function eliminarConjunto(id) {
-  fetch(`http://localhost:3000/api/conjuntos/${id}`, {
+  fetch(`https://xenoverse-app-production.up.railway.app/api/conjuntos/${id}`, {
     method: 'DELETE'
   })
   .then(res => res.json())
@@ -410,7 +410,7 @@ function mostrarHabilidadesEnModal(conjunto) {
 function quitarHabilidadDeCombo(conjuntoId, habilidadId) {
 
   fetch(
-    `http://localhost:3000/api/conjuntos/${conjuntoId}/habilidades/${habilidadId}`,
+    `https://xenoverse-app-production.up.railway.app/api/conjuntos/${conjuntoId}/habilidades/${habilidadId}`,
     {
       method: 'DELETE'
     }
@@ -453,7 +453,7 @@ function actualizarConjuntoModal() {
     document.getElementById('editDescripcionCombo').value;
 
   fetch(
-    `http://localhost:3000/api/conjuntos/${idConjuntoEditando}`,
+    `https://xenoverse-app-production.up.railway.app/api/conjuntos/${idConjuntoEditando}`,
     {
       method: 'PUT',
 

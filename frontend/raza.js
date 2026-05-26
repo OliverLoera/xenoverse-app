@@ -21,7 +21,7 @@ function seleccionarRaza(raza) {
     freezer: new Audio('audio/freezer.wav')
   };
 
-  fetch(`http://localhost:3000/api/usuarios/${usuario.id}/raza`, {
+  fetch(`https://xenoverse-app-production.up.railway.app/api/usuarios/${usuario.id}/raza`, {
 
     method: 'PUT',
 

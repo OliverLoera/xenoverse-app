@@ -4,7 +4,7 @@ function login() {
 
   const password = document.getElementById('password').value;
 
-  fetch('http://localhost:3000/api/login', {
+  fetch('https://xenoverse-app-production.up.railway.app/api/login', {
 
     method: 'POST',
 
