@@ -2,15 +2,17 @@ const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
 
-  host: process.env.DB_HOST || 'localhost',
+  host: process.env.MYSQLHOST || 'localhost',
 
-  user: process.env.DB_USER || 'root',
+  user: process.env.MYSQLUSER || 'root',
 
-  password: process.env.DB_PASSWORD || '',
+  password: process.env.MYSQLPASSWORD || '',
 
-  database: process.env.DB_NAME || 'xenoverse_db',
+  database:
+    process.env.MYSQLDATABASE ||
+    'xenoverse_db',
 
-  port: process.env.DB_PORT || 3306
+  port: process.env.MYSQLPORT || 3306
 
 });
 
