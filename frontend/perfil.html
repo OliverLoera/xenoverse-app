@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const raza = localStorage.getItem('raza');
+
+    const temas = {
+      sayajin: '#ff8c00',
+      majin: '#ff4fc3',
+      humano: '#2196f3',
+      namekiano: '#2ecc71',
+      freezer: '#b388ff'
+    };
+
+    const brillos = {
+      sayajin: 'rgba(255, 140, 0, 0.6)',
+      majin: 'rgba(255, 79, 195, 0.6)',
+      humano: 'rgba(33, 150, 243, 0.6)',
+      namekiano: 'rgba(46, 204, 113, 0.6)',
+      freezer: 'rgba(179, 136, 255, 0.6)'
+    };
+
+    if (raza && temas[raza]) {
+      document.documentElement.style.setProperty(
+        '--color-principal',
+        temas[raza]
+      );
+
+      document.documentElement.style.setProperty(
+        '--color-brillo',
+        brillos[raza]
+      );
+    }
+  </script>
+</head>
+<body>
+
+  <header class="header" id="header-principal">
+
+    <div class="header-contenido">
+      <h1>Dragon Ball Patroller Time OC</h1>
+
+      <nav class="menu-principal">
+        <a href="index.html">Home</a>
+        <a href="crear-combos.html">Combos</a>
+        <a href="famosos.html">Famosos</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+    </div>
+
+    <img id="banner-raza" class="icono-raza">
+
+  </header>
+
+  <main class="container">
+
+    <section class="section">
+
+      <div class="card">
+
+        <h2>Perfil del usuario</h2>
+
+        <div class="perfil-foto-contenedor">
+          <img id="fotoPerfil" class="foto-perfil" src="img/default-user.png" alt="Foto de perfil">
+
+          <label class="btn-subir-foto">
+            Cambiar foto
+            <input type="file" id="inputFotoPerfil" accept="image/*" onchange="cambiarFotoPerfil(event)">
+          </label>
+        </div>
+
+        <p>
+          <strong>Nombre:</strong>
+          <span id="nombreUsuario"></span>
+        </p>
+
+        <p>
+          <strong>Correo:</strong>
+
+          <span id="correoUsuario"></span>
+        </p>
+
+        <div class="editar-perfil">
+
+          <input
+            type="text"
+            id="nuevoNombre"
+            placeholder="Nuevo nombre"
+          >
+
+          <input
+            type="email"
+            id="nuevoCorreo"
+            placeholder="Nuevo correo"
+          >
+
+          <input
+            type="password"
+            id="nuevaPassword"
+            placeholder="Nueva contraseña"
+          >
+
+          <button onclick="actualizarPerfil()">
+            Guardar cambios
+          </button>
+
+        </div>
+        <p>
+          <strong>Raza:</strong>
+          <span id="razaUsuario"></span>
+        </p>
+
+        
+
+        <button onclick="reproducirSonidoBoton(); window.location.href='seleccionar-raza.html'">
+          Cambiar raza
+        </button>
+
+        <button onclick="reproducirSonidoBoton(); cerrarSesion()">
+          Cerrar sesión
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="sonidos.js"></script>
+  <script src="auth.js"></script>
+  <script src="tema.js"></script>
+  <script src="perfil.js"></script>
+
+</body>
+</html>

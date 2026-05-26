@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Combos</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const raza = localStorage.getItem('raza');
+
+    const temas = {
+      sayajin: '#ff8c00',
+      majin: '#ff4fc3',
+      humano: '#2196f3',
+      namekiano: '#2ecc71',
+      freezer: '#b388ff'
+    };
+
+    const brillos = {
+      sayajin: 'rgba(255, 140, 0, 0.6)',
+      majin: 'rgba(255, 79, 195, 0.6)',
+      humano: 'rgba(33, 150, 243, 0.6)',
+      namekiano: 'rgba(46, 204, 113, 0.6)',
+      freezer: 'rgba(179, 136, 255, 0.6)'
+    };
+
+    if (raza && temas[raza]) {
+      document.documentElement.style.setProperty(
+        '--color-principal',
+        temas[raza]
+      );
+
+      document.documentElement.style.setProperty(
+        '--color-brillo',
+        brillos[raza]
+      );
+    }
+  </script>
+</head>
+
+<div id="modalEditarCombo" class="modal">
+  <div class="modal-contenido">
+    <h2>Editar combo</h2>
+
+    <input type="text" id="editNombreCombo" placeholder="Nombre del combo">
+    <input type="text" id="editDescripcionCombo" placeholder="Descripción del combo">
+
+    <h3>Habilidades equipadas</h3>
+    <div id="habilidadesComboEditar"></div>
+
+    <button onclick="reproducirSonidoBoton(); actualizarConjuntoModal()">
+      Guardar cambios
+    </button>
+
+    <button onclick="reproducirSonidoBoton(); cerrarModalCombo()">
+      Cancelar
+    </button>
+  </div>
+</div>
+
+<body>
+
+  <header class="header" id="header-principal">
+
+    <div class="header-contenido">
+      <h1>Dragon Ball Patroller Time OC</h1>
+
+      <nav class="menu-principal">
+        <a href="index.html">Home</a>
+        <a href="crear-combos.html">Combos</a>
+        <a href="famosos.html">Famosos</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+    </div>
+
+    <img id="banner-raza" class="icono-raza">
+
+  </header>
+
+  <main class="container">
+
+    <section class="section">
+
+      <h2>Crear conjunto</h2>
+
+      <input type="text" id="nombreConjunto" placeholder="Nombre del conjunto">
+
+      <input type="text" id="descripcionConjunto" placeholder="Descripción">
+
+      <button onclick="reproducirSonidoBoton(); agregarConjunto()">
+        Crear conjunto
+      </button>
+
+      <button onclick="reproducirSonidoBoton(); irACombos()">
+        Ver combos
+      </button>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>Seleccionar conjunto</h2>
+
+      <select id="select-conjuntos"></select>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>Habilidades disponibles</h2>
+
+        <div class="navbar">
+          <button onclick="reproducirSonidoBoton(); filtrarCategoriaCombo('golpe')">Técnicas de golpe</button>
+          <button onclick="reproducirSonidoBoton(); filtrarCategoriaCombo('ki')">Técnicas de Ki</button>
+          <button onclick="reproducirSonidoBoton(); filtrarCategoriaCombo('super_golpe')">Super técnicas de golpe</button>
+          <button onclick="reproducirSonidoBoton(); filtrarCategoriaCombo('super_ki')">Super técnicas de Ki</button>
+          <button onclick="reproducirSonidoBoton(); filtrarCategoriaCombo('esquive')">Esquive</button>
+          <button onclick="reproducirSonidoBoton(); filtrarCategoriaCombo('transformacion')">Transformaciones</button>
+          <button onclick="reproducirSonidoBoton(); mostrarFavoritosCombo()">
+            Favoritos
+          </button>
+          <button onclick="reproducirSonidoBoton(); mostrarTodasCombo()">Todas</button>
+
+        </div>
+
+      <div id="lista-habilidades"></div>
+      <div id="paginacion-combos" class="paginacion"></div>
+
+      
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>Conjuntos creados</h2>
+
+      <div id="lista-conjuntos"></div>
+
+    </section>
+
+  </main>
+
+  <script src="sonidos.js"></script>
+  <script src="auth.js"></script>
+  <script src="tema.js"></script>
+  <script src="combos.js"></script>
+
+</body>
+</html>

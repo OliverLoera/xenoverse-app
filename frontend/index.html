@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xenoverse App - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const raza = localStorage.getItem('raza');
+
+    const temas = {
+      sayajin: '#ff8c00',
+      majin: '#ff4fc3',
+      humano: '#2196f3',
+      namekiano: '#2ecc71',
+      freezer: '#b388ff'
+    };
+
+    const brillos = {
+      sayajin: 'rgba(255, 140, 0, 0.6)',
+      majin: 'rgba(255, 79, 195, 0.6)',
+      humano: 'rgba(33, 150, 243, 0.6)',
+      namekiano: 'rgba(46, 204, 113, 0.6)',
+      freezer: 'rgba(179, 136, 255, 0.6)'
+    };
+
+    if (raza && temas[raza]) {
+      document.documentElement.style.setProperty(
+        '--color-principal',
+        temas[raza]
+      );
+
+      document.documentElement.style.setProperty(
+        '--color-brillo',
+        brillos[raza]
+      );
+    }
+  </script>
+</head>
+
+<div id="modalEditar" class="modal">
+  <div class="modal-contenido">
+    <h2>Editar habilidad</h2>
+
+    <input type="text" id="editNombre" placeholder="Nombre">
+    <input type="text" id="editDescripcion" placeholder="Descripción">
+    <input type="text" id="editImagen" placeholder="URL de imagen">
+
+    <select id="editCategoria">
+      <option value="golpe">Técnica de golpe</option>
+      <option value="ki">Técnica de Ki</option>
+      <option value="super_golpe">Super técnica de golpe</option>
+      <option value="super_ki">Super técnica de Ki</option>
+      <option value="esquive">Habilidad de esquive</option>
+      <option value="transformacion">Transformación</option>
+    </select>
+
+    <button onclick="reproducirSonidoBoton(); actualizarHabilidad()">Guardar cambios</button>
+    <button onclick="reproducirSonidoBoton(); cerrarModalEditar()">Cancelar</button>
+  </div>
+</div>
+
+<body>
+  
+  <header class="header" id="header-principal">
+
+    <div class="header-contenido">
+      <h1>Dragon Ball Patroller Time OC</h1>
+
+      <nav class="menu-principal">
+        <a href="index.html">Home</a>
+        <a href="crear-combos.html">Combos</a>
+        <a href="famosos.html">Famosos</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+    </div>
+
+    <img id="banner-raza" class="icono-raza">
+
+  </header>
+
+  <main class="container">
+
+    <input
+      type="text"
+      id="busqueda"
+      placeholder="Buscar habilidad..."
+      oninput="buscarHabilidades()"
+    >
+
+    <section class="section">
+      <h2>Habilidades</h2>
+
+      <div class="navbar">
+        <button onclick="reproducirSonidoBoton(); filtrarCategoria('golpe')">Técnicas de golpe</button>
+        <button onclick="reproducirSonidoBoton(); filtrarCategoria('ki')">Técnicas de Ki</button>
+        <button onclick="reproducirSonidoBoton(); filtrarCategoria('super_golpe')">Super técnicas de golpe</button>
+        <button onclick="reproducirSonidoBoton(); filtrarCategoria('super_ki')">Super técnicas de Ki</button>
+        <button onclick="reproducirSonidoBoton(); filtrarCategoria('esquive')">Habilidad de esquive</button>
+        <button onclick="reproducirSonidoBoton(); filtrarCategoria('transformacion')">Transformaciones</button>
+        <button onclick="reproducirSonidoBoton(); mostrarFavoritos()">Favoritos</button>
+        <button onclick="reproducirSonidoBoton(); mostrarTodas()">Todas</button>
+      </div>
+
+      <section class="section">
+
+        <h2>Crear nueva habilidad</h2>
+
+        <input type="text" id="nombre" placeholder="Nombre de la habilidad">
+
+        <input type="text" id="descripcion" placeholder="Descripción">
+
+        <input type="text" id="imagen" placeholder="URL de imagen">
+
+        <select id="categoria">
+
+          <option value="golpe">Técnica de golpe</option>
+
+          <option value="ki">Técnica de Ki</option>
+
+          <option value="super_golpe">Super técnica de golpe</option>
+
+          <option value="super_ki">Super técnica de Ki</option>
+
+          <option value="esquive">Habilidad de esquive</option>
+
+          <option value="transformacion">Transformación</option>
+
+        </select>
+
+        <button id="btnHabilidad" onclick="reproducirSonidoBoton(); guardarHabilidad()">
+          Crear habilidad
+        </button>
+
+      </section>
+
+      <div id="lista-habilidades"></div>
+      <div id="paginacion" class="paginacion"></div>
+
+
+
+    </section>
+
+  </main>
+
+  <script src="sonidos.js"></script>
+  <script src="auth.js"></script>
+  <script src="tema.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
