@@ -15,53 +15,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/api/crear-tablas', (req, res) => {
-  const sql = `
-    CREATE TABLE IF NOT EXISTS usuarios (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      nombre VARCHAR(100) NOT NULL,
-      email VARCHAR(100) NOT NULL UNIQUE,
-      password VARCHAR(255) NOT NULL,
-      raza VARCHAR(50)
-    );
-
-    CREATE TABLE IF NOT EXISTS habilidades (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      nombre VARCHAR(100) NOT NULL,
-      descripcion TEXT NOT NULL,
-      categoria VARCHAR(50) NOT NULL,
-      imagen TEXT,
-      usuario_id INT NULL,
-      FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE IF NOT EXISTS conjuntos (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      nombre VARCHAR(100) NOT NULL,
-      descripcion TEXT,
-      usuario_id INT,
-      FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE IF NOT EXISTS conjunto_habilidades (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      conjunto_id INT NOT NULL,
-      habilidad_id INT NOT NULL,
-      FOREIGN KEY (conjunto_id) REFERENCES conjuntos(id) ON DELETE CASCADE,
-      FOREIGN KEY (habilidad_id) REFERENCES habilidades(id) ON DELETE CASCADE
-    );
-  `;
-
-  db.query(sql, (error) => {
-    if (error) {
-      console.log(error);
-      return res.status(500).json({ error: 'Error al crear tablas' });
-    }
-
-    res.json({ mensaje: 'Tablas creadas correctamente' });
-  });
-});
-
 app.listen(PORT, () => {
   console.log(`Servidor funcionando en puerto ${PORT}`);
 });
